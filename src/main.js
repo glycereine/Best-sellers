@@ -7,34 +7,41 @@ const modalMessageText = document.getElementById("modal-message");
 const productContentArea = document.getElementById("product-content-area");
 const closeModalButton = document.querySelector(".js-close-modal");
 
-function initCategoryNavigation() {
-  categoryList.addEventListener("click", (event) => {
-    event.preventDefault();
+// Category Navigation Logic
+function handleCategoryClick(event) {
+  event.preventDefault();
 
-    const categoryItem = event.target.closest(".category-nav__item");
+  const categoryItem = event.target.closest(".category-nav__item");
 
-    if (
-      categoryItem &&
-      !categoryItem.classList.contains("category-nav__item--active")
-    ) {
-      const targetCategory = categoryItem.getAttribute("data-category");
+  if (
+    categoryItem &&
+    !categoryItem.classList.contains("category-nav__item--active")
+  ) {
+    const targetCategory = categoryItem.getAttribute("data-category");
+    updateActiveCategory(categoryItem);
+    filterProductCards(targetCategory);
+  }
+}
 
-      document.querySelectorAll(".category-nav__item").forEach((item) => {
-        item.classList.remove("category-nav__item--active");
-      });
-      categoryItem.classList.add("category-nav__item--active");
+function updateActiveCategory(activeItem) {
+  document.querySelectorAll(".category-nav__item--active").forEach((item) => {
+    item.classList.remove("category-nav__item--active");
+  });
+  activeItem.classList.add("category-nav__item--active");
+}
 
-      productCards.forEach((card) => {
-        if (card.getAttribute("data-product-id") === targetCategory) {
-          card.classList.add("product-card--visible");
-        } else {
-          card.classList.remove("product-card--visible");
-        }
-      });
-    }
+function filterProductCards(categoryId) {
+  productCards.forEach((card) => {
+    const isVisible = card.getAttribute("data-product-id") === categoryId;
+    card.classList.toggle("product-card--visible", isVisible);
   });
 }
 
+function initCategoryNavigation() {
+  categoryList.addEventListener("click", handleCategoryClick);
+}
+
+// Modal Logic
 function openModal(productName) {
   if (!productName) return;
 
@@ -62,13 +69,10 @@ function initModalHandlers() {
       const activeCard = button.closest(".product-card");
 
       if (activeCard) {
-        const productNameElement = activeCard.querySelector(
-          ".product-card__name"
-        );
+        const productNameElement = activeCard.querySelector(".product-card__name");
         const productName = productNameElement
           ? productNameElement.textContent.trim()
-          : "Неизвестный продукт";
-
+          : "error";
         openModal(productName);
       }
     }
