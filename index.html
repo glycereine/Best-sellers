@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Best sellers</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <section class="product-section">
+        <div class="product-section__container">
+            <div class="product-section__sidebar">
+                
+                <nav class="category-nav">
+                    <p class="category-nav__subtitle">Best sellers</p>
+                    <h2 class="category-nav__title">Trending Products</h2>
+
+                    <ul class="category-nav__list" id="category-list">
+                        
+                        <li class="category-nav__item category-nav__item--active" data-category="rings">
+                            <a href="#" class="category-nav__link">
+                                <h3 class="category-nav__link-title">Mantra Rings</h3>
+                                <svg class="category-nav__arrow" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M14.4297 5.93005L20.4997 12.0001L14.4297 18.0701" stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+                                    <path d="M3.5 12H20.33" stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                            </a>
+                        </li>
+                        
+                        <li class="category-nav__item" data-category="bands">
+                            <a href="#" class="category-nav__link">
+                                <h3 class="category-nav__link-title">CharityBands®</h3>
+                                <svg class="category-nav__arrow" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M14.4297 5.93005L20.4997 12.0001L14.4297 18.0701" stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+                                    <path d="M3.5 12H20.33" stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                            </a>
+                        </li>
+
+                        <li class="category-nav__item" data-category="statement">
+                            <a href="#" class="category-nav__link">
+                                <h3 class="category-nav__link-title">Statement Collection</h3>
+                                <svg class="category-nav__arrow" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M14.4297 5.93005L20.4997 12.0001L14.4297 18.0701" stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+                                    <path d="M3.5 12H20.33" stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+
+            <div class="product-section__main-content" id="product-content-area">
+                <div class="product-card product-card--visible" data-product-id="rings">
+                    <a href="/products/ring-1" class="product-card__image-link" aria-label="Butterfly - Hope And Rebirth">
+                        <picture>
+                            <source 
+                                media="(max-width: 991px)"
+                                srcset="/Butterfly-Hope-And-Rebirth-@343.jpeg 1x"
+                                type="image/jpeg">
+                                
+                           <img
+                            src="/Butterfly-Hope-And-Rebirth.jpeg" 
+                            srcset="/Butterfly-Hope-And-Rebirth-2x.jpeg 2x" 
+                            alt="Butterfly - Hope And Rebirth" 
+                            class="product-card__image"
+                            loading="lazy"
+                            width="816"
+                            height="816"/>
+
+                        </picture>
+                    </a>
+
+                    <div class="product-tags">
+                        <span class="product-tags__item">New</span>
+                        <span class="product-tags__item product-tags__item--sale">Sale</span>
+                    </div>
+
+                    <div class="product-actions">
+                        <button class="product-actions__button" aria-label="Add to favorites">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M20.8382 4.60999C20.3274 4.099 19.721 3.69364 19.0535 3.41708C18.3861 3.14052 17.6707 2.99817 16.9482 2.99817C16.2257 2.99817 15.5103 3.14052 14.8428 3.41708C14.1754 3.69364 13.5689 4.099 13.0582 4.60999L11.9982 5.66999L10.9382 4.60999C9.90647 3.5783 8.5072 2.9987 7.04817 2.9987C5.58913 2.9987 4.18986 3.5783 3.15817 4.60999C2.12647 5.64169 1.54688 7.04096 1.54688 8.49999C1.54687 9.95903 2.12647 11.3583 3.15817 12.39L4.21817 13.45L11.9982 21.23L19.7782 13.45L20.8382 12.39C21.3492 11.8792 21.7545 11.2728 22.0311 10.6053C22.3076 9.93789 22.45 9.22248 22.45 8.49999C22.45 7.77751 22.3076 7.0621 22.0311 6.39464C21.7545 5.72718 21.3492 5.12075 20.8382 4.60999V4.60999Z" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
+                        <button class="product-actions__button js-open-modal" data-product-id="rings" aria-label="Quick view">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M15.5819 12C15.5819 13.98 13.9819 15.58 12.0019 15.58C10.0219 15.58 8.42188 13.98 8.42188 12C8.42188 10.02 10.0219 8.42004 12.0019 8.42004C13.9819 8.42004 15.5819 10.02 15.5819 12Z" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M11.9998 20.27C15.5298 20.27 18.8198 18.19 21.1098 14.59C22.0098 13.18 22.0098 10.81 21.1098 9.39997C18.8198 5.79997 15.5298 3.71997 11.9998 3.71997C8.46984 3.71997 5.17984 5.79997 2.88984 9.39997C1.98984 10.81 1.98984 13.18 2.88984 14.59C5.17984 18.19 8.46984 20.27 11.9998 20.27Z" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
+                    </div>
+
+                    <div class="product-card__details">
+                        <a href="/products/ring-1" class="product-card__name-link">
+                            <span class="product-card__name">Butterfly - Hope And Rebirth</span>
+                        </a>
+                        <div class="product-card__price">
+                            <span class="product-card__price-sale">₴1,424.00</span>
+                            <span class="product-card__price-original">₴1,424.00</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card" data-product-id="bands">
+                    
+                    <a href="/products/ring-1" class="product-card__image-link" aria-label="Giving Hope Band - Limited Edition">
+                        <picture>
+                            <source 
+                                media="(max-width: 991px)"
+                                srcset="/Butterfly-Hope-And-Rebirth-@343.jpeg 1x"
+                                type="image/jpeg">
+                                
+                           <img
+                            src="/image-15.jpeg" 
+                            srcset="/image-15-2x.jpeg 2x" 
+                            alt="Giving Hope Band - Limited Edition" 
+                            class="product-card__image"
+                            loading="lazy"
+                            width="816"
+                            height="816"/>
+
+                        </picture>
+                    </a>
+                        
+                    <div class="product-tags">
+                        <span class="product-tags__item">New</span>
+                    </div>
+
+                    <div class="product-actions">
+                        <button class="product-actions__button" aria-label="Add to favorites">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M20.8382 4.60999C20.3274 4.099 19.721 3.69364 19.0535 3.41708C18.3861 3.14052 17.6707 2.99817 16.9482 2.99817C16.2257 2.99817 15.5103 3.14052 14.8428 3.41708C14.1754 3.69364 13.5689 4.099 13.0582 4.60999L11.9982 5.66999L10.9382 4.60999C9.90647 3.5783 8.5072 2.9987 7.04817 2.9987C5.58913 2.9987 4.18986 3.5783 3.15817 4.60999C2.12647 5.64169 1.54688 7.04096 1.54688 8.49999C1.54687 9.95903 2.12647 11.3583 3.15817 12.39L4.21817 13.45L11.9982 21.23L19.7782 13.45L20.8382 12.39C21.3492 11.8792 21.7545 11.2728 22.0311 10.6053C22.3076 9.93789 22.45 9.22248 22.45 8.49999C22.45 7.77751 22.3076 7.0621 22.0311 6.39464C21.7545 5.72718 21.3492 5.12075 20.8382 4.60999V4.60999Z" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
+                        <button class="product-actions__button js-open-modal" data-product-id="rings" aria-label="Quick view">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M15.5819 12C15.5819 13.98 13.9819 15.58 12.0019 15.58C10.0219 15.58 8.42188 13.98 8.42188 12C8.42188 10.02 10.0219 8.42004 12.0019 8.42004C13.9819 8.42004 15.5819 10.02 15.5819 12Z" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M11.9998 20.27C15.5298 20.27 18.8198 18.19 21.1098 14.59C22.0098 13.18 22.0098 10.81 21.1098 9.39997C18.8198 5.79997 15.5298 3.71997 11.9998 3.71997C8.46984 3.71997 5.17984 5.79997 2.88984 9.39997C1.98984 10.81 1.98984 13.18 2.88984 14.59C5.17984 18.19 8.46984 20.27 11.9998 20.27Z" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
+                    </div>
+
+                    <div class="product-card__details">
+                        <a href="/products/band-2" class="product-card__name-link">
+                            <span class="product-card__name">Giving Hope Band - Limited Edition</span>
+                        </a>
+                        <div class="product-card__price">
+                            <span class="product-card__price-sale">₴899.00</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card" data-product-id="statement">
+                    
+                   <a href="/products/ring-1" class="product-card__image-link" aria-label="Moonstone Pendant - The Grand Statement">
+                        <picture>
+                            <source 
+                                media="(max-width: 991px)"
+                                srcset="/Butterfly-Hope-And-Rebirth-@343.jpeg 1x"
+                                type="image/jpeg">
+                                
+                           <img
+                           src="/image-17.jpeg" 
+                            srcset="/image-17-2x.jpeg 2x" 
+                            alt="Moonstone Pendant - The Grand Statement" 
+                            class="product-card__image"
+                            loading="lazy"
+                            width="816"
+                            height="816"/>
+
+                        </picture>
+                    </a>
+                        
+                    <div class="product-tags">
+                        <span class="product-tags__item product-tags__item--sale">Sale</span>
+                    </div>
+
+                    <div class="product-actions">
+                        <button class="product-actions__button" aria-label="Add to favorites">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M20.8382 4.60999C20.3274 4.099 19.721 3.69364 19.0535 3.41708C18.3861 3.14052 17.6707 2.99817 16.9482 2.99817C16.2257 2.99817 15.5103 3.14052 14.8428 3.41708C14.1754 3.69364 13.5689 4.099 13.0582 4.60999L11.9982 5.66999L10.9382 4.60999C9.90647 3.5783 8.5072 2.9987 7.04817 2.9987C5.58913 2.9987 4.18986 3.5783 3.15817 4.60999C2.12647 5.64169 1.54688 7.04096 1.54688 8.49999C1.54687 9.95903 2.12647 11.3583 3.15817 12.39L4.21817 13.45L11.9982 21.23L19.7782 13.45L20.8382 12.39C21.3492 11.8792 21.7545 11.2728 22.0311 10.6053C22.3076 9.93789 22.45 9.22248 22.45 8.49999C22.45 7.77751 22.3076 7.0621 22.0311 6.39464C21.7545 5.72718 21.3492 5.12075 20.8382 4.60999V4.60999Z" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
+                        <button class="product-actions__button js-open-modal" data-product-id="rings" aria-label="Quick view">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M15.5819 12C15.5819 13.98 13.9819 15.58 12.0019 15.58C10.0219 15.58 8.42188 13.98 8.42188 12C8.42188 10.02 10.0219 8.42004 12.0019 8.42004C13.9819 8.42004 15.5819 10.02 15.5819 12Z" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M11.9998 20.27C15.5298 20.27 18.8198 18.19 21.1098 14.59C22.0098 13.18 22.0098 10.81 21.1098 9.39997C18.8198 5.79997 15.5298 3.71997 11.9998 3.71997C8.46984 3.71997 5.17984 5.79997 2.88984 9.39997C1.98984 10.81 1.98984 13.18 2.88984 14.59C5.17984 18.19 8.46984 20.27 11.9998 20.27Z" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
+                    </div>
+
+                    <div class="product-card__details">
+                        <a href="/products/statement-3" class="product-card__name-link">
+                            <span class="product-card__name">Moonstone Pendant - The Grand Statement</span>
+                        </a>
+                        <div class="product-card__price">
+                            <span class="product-card__price-sale">₴2,999.00</span>
+                            <span class="product-card__price-original">₴4,500.00</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <div id="notification-modal" class="modal modal--init-hidden">
+        <div class="modal__content">
+            <button class="modal__close js-close-modal" aria-label="Close">
+                &times;
+            </button>
+            <p id="modal-message" class="modal__message-text"></p>
+        </div>
+    </div>
+
+    <script type="module" src="src/main.js"></script>
+</body>
+
+</html>
