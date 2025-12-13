@@ -1,4 +1,4 @@
-@use 'variables' as *;
+@use 'variables'as *;
 
 .modal {
     position: fixed;
@@ -49,6 +49,9 @@
         font-size: 24px;
         cursor: pointer;
         color: $black;
+        width: 24px;
+        height: 24px;
+        line-height: 0;
 
         &:hover {
             color: $black;
