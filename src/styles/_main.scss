@@ -1,6 +1,10 @@
 @use 'breakpoint'as *;
 @use 'variables'as *;
 
+body.modal-open {
+    overflow: hidden;
+}
+
 .product-section {
     width: 100%;
     padding: 16px;
