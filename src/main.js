@@ -46,7 +46,6 @@ function initializeNotificationModal() {
   const productContentArea = document.getElementById("product-content-area");
   const notificationModal = document.getElementById("notification-modal");
   const modalMessageText = document.getElementById("modal-message");
-  const closeModalButton = document.querySelector(".js-close-modal");
 
   function openModal(productName) {
     if (!productName) return;
@@ -56,10 +55,6 @@ function initializeNotificationModal() {
     document.body.classList.add("modal-open");
   }
 
-  function closeModal() {
-    notificationModal.classList.remove("modal--open");
-    document.body.classList.remove("modal-open");
-  }
 
   function initModalHandlers(event) {
     const button = event.target.closest(".js-open-modal");
@@ -77,21 +72,20 @@ function initializeNotificationModal() {
     }
   }
 
-  function handleModalClicks(event) {
-    if (event.target.closest(".js-close-modal")) {
-      closeModal();
-      return;
-    }
-    if (event.target === notificationModal) {
-      closeModal();
-    }
+  function closeModal() {
+    notificationModal.classList.remove("modal--open");
+    document.body.classList.remove("modal-open");
   }
 
-  // if (notificationModal) {
-    notificationModal.classList.remove("modal--init-hidden");
-  // }
+  function handleModalClose(event) {
+    (event.target.closest(".js-close-modal") || event.target === notificationModal) 
+    ? closeModal() 
+    : null;
+  }
+
   productContentArea.addEventListener("click", initModalHandlers);
-  notificationModal.addEventListener("click", handleModalClicks);
+  notificationModal.addEventListener("click", handleModalClose);
+  window.onload = () => notificationModal && notificationModal.classList.remove("modal--init-hidden");
 }
 
 function init() {
@@ -99,4 +93,4 @@ function init() {
   initializeNotificationModal();
 }
 
-document.addEventListener("DOMContentLoaded", init);
+document.addEventListener("DOMContentLoaded",init);

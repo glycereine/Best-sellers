@@ -22,6 +22,12 @@
         opacity: 1;
     }
 
+    &--init-hidden {
+        display: none;
+        visibility: hidden;
+        opacity: 0;
+    }
+
     &__content {
         background-color: $white;
         padding: 24px 32px;
