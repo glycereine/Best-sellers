@@ -1,7 +1,7 @@
 @use 'variables' as *;
 
 .modal {
-    display: flex;
+    display: none;
     visibility: hidden;
     z-index: 1000;
     position: fixed;
@@ -21,10 +21,6 @@
         display: flex;  
         visibility: visible;
         opacity: 1;
-    }
-
-    &--init-hidden {
-        // display: none;
     }
 
     &__content {

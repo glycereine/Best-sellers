@@ -13,9 +13,9 @@ function initCategoryNavigation() {
       categoryItem &&
       !categoryItem.classList.contains('category-nav__item--active')
     ) {
-      const targetCategory = categoryItem.getAttribute('data-category');
+      const targetCategory = categoryItem.dataset.category;
       updateActiveCategory(categoryItem);
-      filterProductCards(targetCategory);
+      updateActiveProductCards(targetCategory);
     }
   }
 
@@ -26,8 +26,7 @@ function initCategoryNavigation() {
     activeItem.classList.add('category-nav__item--active');
   }
 
-  function filterProductCards(categoryId) {
-
+  function updateActiveProductCards(categoryId) {
     document.querySelectorAll('.product-card--visible').forEach((card) => {
       card.classList.remove('product-card--visible');
     });
@@ -42,45 +41,27 @@ function initCategoryNavigation() {
 }
 
 // Modal Logic
-function initializeNotificationModal() {
+function initNotificationModal() {
   const productContentArea = document.getElementById('product-content-area');
   const notificationModal = document.getElementById('notification-modal');
   const modalMessageText = document.getElementById('modal-message');
 
-  function openModal(productName) {
-    if (!productName) return;
-    const message = `${productName} has been added to the your cart.`;
-    modalMessageText.textContent = message;
-
-    notificationModal.style.display = 'flex';
-    requestAnimationFrame(() => {
-      notificationModal.classList.add('modal--open');
-    });
-
-    document.body.classList.add('modal-open');
-  }
-
-  function initModalHandlers(event) {
+  function handleModalOpen(event) {
     const button = event.target.closest('.js-open-modal');
+    if (!button) return;
 
-    if (button) {
-      event.stopPropagation();
-      event.preventDefault();
+    event.stopPropagation();
+    event.preventDefault();
 
-      const activeCard = button.closest('.product-card');
+    const activeCard = button.closest('.product-card');
+    if (!activeCard) return;
 
-      if (activeCard) {
-        const productName = activeCard
-          .querySelector('.product-card__name')
-          .textContent.trim();
-        openModal(productName);
-      }
-    }
-  }
+    const productName = activeCard.querySelector('.product-card__name').textContent.trim();
+    if (!productName) return;
 
-  function closeModal() {
-    notificationModal.classList.remove('modal--open');
-    document.body.classList.remove('modal-open');
+    modalMessageText.textContent = `${productName} has been added to the your cart.`;
+
+    openModal();
   }
 
   function handleModalClose(event) {
@@ -89,23 +70,35 @@ function initializeNotificationModal() {
     }
   }
 
-  function handleKeydown(event) {
+  function handleModalEscapeKey(event) {
     if (event.key === 'Escape' && notificationModal.classList.contains('modal--open')) {
       closeModal();
     }
   }
 
-  productContentArea.addEventListener('click', initModalHandlers);
+  function openModal() {
+  // fix for showing modal
+    notificationModal.style.display = 'flex';
+    requestAnimationFrame(() => {
+      notificationModal.classList.add('modal--open');
+    });
+
+    document.body.classList.add('modal-open');
+  }
+  
+  function closeModal() {
+    notificationModal.classList.remove('modal--open');
+    document.body.classList.remove('modal-open');
+  }
+
+  productContentArea.addEventListener('click', handleModalOpen);
   notificationModal.addEventListener('click', handleModalClose);
-  document.addEventListener('keydown', handleKeydown);
-  // window.onload = () =>
-  //   notificationModal &&
-  //   notificationModal.classList.remove('modal--init-hidden');
+  document.addEventListener('keydown', handleModalEscapeKey);
 }
 
 function init() {
   initCategoryNavigation();
-  initializeNotificationModal();
+  initNotificationModal();
 }
 
 document.addEventListener('DOMContentLoaded', init);
