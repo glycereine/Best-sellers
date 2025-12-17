@@ -1,6 +1,12 @@
 import './styles/source.scss';
 
-// Category Navigation Logic
+const classes = {
+  productCardVisible: "product-card--visible",
+  navItemActive: 'category-nav__item--active',
+  modalOpen: 'modal--open',
+  bodyModalOpen: 'modal-open',
+}
+
 function initCategoryNavigation() {
   const categoryList = document.getElementById('category-list');
 
@@ -8,39 +14,42 @@ function initCategoryNavigation() {
     event.preventDefault();
 
     const categoryItem = event.target.closest('.category-nav__item');
+    const targetCategory = categoryItem?.dataset?.category;
+    const isCategoryItemActive = categoryItem.classList.contains(classes.navItemActive);
 
-    if (
-      categoryItem &&
-      !categoryItem.classList.contains('category-nav__item--active')
-    ) {
-      const targetCategory = categoryItem.dataset.category;
-      updateActiveCategory(categoryItem);
-      updateActiveProductCards(targetCategory);
+    if (!categoryItem || isCategoryItemActive || !targetCategory) {
+      return;
     }
+
+    updateActiveCategory(categoryItem);
+    updateActiveProductCards(targetCategory);
   }
 
   function updateActiveCategory(activeItem) {
-    document.querySelectorAll('.category-nav__item--active').forEach((item) => {
-      item.classList.remove('category-nav__item--active');
-    });
-    activeItem.classList.add('category-nav__item--active');
+    const oldActiveItem = document.querySelector(`.${classes.navItemActive}`);
+    if (oldActiveItem) {
+      oldActiveItem.classList.remove(classes.navItemActive);
+    }
+
+    activeItem.classList.add(classes.navItemActive);
   }
 
   function updateActiveProductCards(categoryId) {
-    document.querySelectorAll('.product-card--visible').forEach((card) => {
-      card.classList.remove('product-card--visible');
-    });
+    const oldActiveItem = document.querySelector(`.${classes.productCardVisible}`);
+    const newActiveItem = document.querySelector(`.product-card[data-product-id="${categoryId}"]`);
 
-    document.querySelectorAll(`.product-card[data-product-id="${categoryId}"]`).forEach((card) => {
-      card.classList.add('product-card--visible');
-    });
+    if (oldActiveItem) {
+      oldActiveItem.classList.remove(classes.productCardVisible);
+    }
 
+    if (newActiveItem) {
+      newActiveItem.classList.add(classes.productCardVisible);
+    }
   }
 
   categoryList.addEventListener('click', handleCategoryClick);
 }
 
-// Modal Logic
 function initNotificationModal() {
   const productContentArea = document.getElementById('product-content-area');
   const notificationModal = document.getElementById('notification-modal');
@@ -71,24 +80,19 @@ function initNotificationModal() {
   }
 
   function handleModalEscapeKey(event) {
-    if (event.key === 'Escape' && notificationModal.classList.contains('modal--open')) {
+    if (event.key === 'Escape' && notificationModal.classList.contains(classes.modalOpen)) {
       closeModal();
     }
   }
 
   function openModal() {
-  // fix for showing modal
-    notificationModal.style.display = 'flex';
-    requestAnimationFrame(() => {
-      notificationModal.classList.add('modal--open');
-    });
-
-    document.body.classList.add('modal-open');
+    notificationModal.classList.add(classes.modalOpen);
+    document.body.classList.add(classes.bodyModalOpen);
   }
   
   function closeModal() {
-    notificationModal.classList.remove('modal--open');
-    document.body.classList.remove('modal-open');
+    notificationModal.classList.remove(classes.modalOpen);
+    document.body.classList.remove(classes.bodyModalOpen);
   }
 
   productContentArea.addEventListener('click', handleModalOpen);
