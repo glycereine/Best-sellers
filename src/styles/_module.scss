@@ -1,7 +1,6 @@
 @use 'variables' as *;
 
 .modal {
-    display: none;
     visibility: hidden;
     z-index: 1000;
     position: fixed;
